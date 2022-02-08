@@ -48,7 +48,7 @@ export default {
         description : this.description,
         imageUrl : this.imageURL,
       };
-      const baseURL =  "http://localhost:8080/";
+      const baseURL =  "https://baobabookstore.herokuapp.com/";
       await axios({
         method: 'post',
         url: baseURL+"genre/create",
