@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import AddGenre from "../views/Genre/AddGenre";
+import Genre from "../views/Genre/Genre";
+import EditGenre from "../views/Genre/EditGenre";
 
 const routes = [
   {
@@ -21,6 +23,17 @@ const routes = [
     path: "/admin/genre/add",
     name: "AddGenre",
     component: AddGenre,
+  },
+  {
+    path: "/admin/genre",
+    name: "AdminGenre",
+    component: Genre,
+  },
+  {
+    path: "/admin/genre/:id",
+    name: "EditGenre",
+    component: EditGenre,
+    props: true,
   }
 ];
 
