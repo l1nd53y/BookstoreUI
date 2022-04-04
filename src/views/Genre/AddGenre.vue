@@ -31,8 +31,8 @@
 </template>
 
 <script>
-var axios =  require('axios')
-import swal from 'sweetalert';
+const axios =  require('axios')
+const swal = require('sweetalert');
 export default {
   data(){
     return {
@@ -48,10 +48,11 @@ export default {
         description : this.description,
         imageUrl : this.imageURL,
       };
-      const baseURL =  "https://baobabookstore.herokuapp.com/";
+      const baseURL =  "https://baobabookstore.herokuapp.com";
+      
       await axios({
         method: 'post',
-        url: baseURL+"genre/create",
+        url: `${baseURL}/bookstore/genre/create`,
         data : JSON.stringify(newGenre),
         headers: {
           'Content-Type': 'application/json'

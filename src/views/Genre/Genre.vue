@@ -1,46 +1,44 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h3 class="pt-3">Our Genres</h3>
-        <router-link id="add-genre" :to="{name : 'AddGenre'}" v-show="$route.name=='AdminGenre'">
-          <button class="btn">Add a new Genre</button>
-        </router-link>
-      </div>
-    </div>
-    <div class="row">
-      <div v-for="genre of genres" :key="genre.id" class="col-md-6 col-xl-4 col-12 pt-3  justify-content-around d-flex">
-        <GenreBox :genre="genre">
-        </GenreBox>
-      </div>
-    </div>
+   <div class="container">
+     <div class="row">
+       <div class="col-12 text-center">
+         <h4 class="pt-3">Genres</h4>
+         <router-link :to="{name : 'AddGenre'}">
+           <button class="btn" style="float: right">Add Genre</button>
+         </router-link>
+     </div>
+</div>
+<div class="row">
+  <div v-for="genre of genres" :key="genre.id" class="col-xl-4 col-md-6 col-12 pt-3 d-flex">
+      <GenreBox  :genre="genre" />
   </div>
+</div>
+</div>
 </template>
 
 <script>
-import GenreBox from '../../components/Genre/GenreBox';
-var axios =  require('axios');
+import GenreBox from "/Users/lindsey/Desktop/DevProjects/BookstoreUI/src/components/Genre/GenreBox.vue"
+const axios =  require('axios');
 export default {
-  name: 'Genre',
-  components : {GenreBox},
-  data() {
+  name: "Genre",
+  components: {GenreBox},
+  data(){
     return {
-      baseURL : "https://baobabookstore.herokuapp.com/",
-      genres : null,
-    }
+      baseURL: "https://baobabookstore.herokuapp.com",
+      genres: [],
+    };
   },
-  methods: {
+  methods : {
     async getGenres() {
-      //fetch genres
-      await axios.get(this.baseURL + "genre/")
+      await axios.get(`${this.baseURL}/bookstore/genre/`)
       .then(res => this.genres = res.data)
       .catch(err => console.log(err))
-    }
+    }   
   },
-  mounted(){
+  mounted() {
     this.getGenres();
   }
-}
+};
 </script>
 
 <style scoped>
@@ -48,9 +46,5 @@ h4 {
   font-family: 'Roboto', sans-serif;
   color: #484848;
   font-weight: 700;
-}
-#add-genre {
-  float: right;
-  font-weight: 500;
 }
 </style>
