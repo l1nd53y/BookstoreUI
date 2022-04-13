@@ -17,10 +17,11 @@
 </template>
 
 <script>
-import GenreBox from "/Users/lindsey/Desktop/DevProjects/BookstoreUI/src/components/Genre/GenreBox.vue"
+import GenreBox from "@/components/Genre/GenreBox.vue"
 const axios =  require('axios');
 export default {
   name: "Genre",
+  //props: ["genres"],
   components: {GenreBox},
   data(){
     return {

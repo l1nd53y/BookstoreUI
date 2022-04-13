@@ -19,7 +19,7 @@
             <input type="text" class="form-control" v-model="description" required>
           </div>
           <div class="form-group">
-            <label>ImageURL</label>
+            <label>Image URL</label>
             <input type="url" class="form-control" v-model="imageURL" required>
           </div>
           <button type="button" class="btn btn-primary" @click="addGenre">Submit</button>
@@ -34,6 +34,7 @@
 const axios =  require('axios')
 const swal = require('sweetalert');
 export default {
+  props : ["baseURL", "genres"],
   data(){
     return {
       genreName : null,
@@ -48,24 +49,18 @@ export default {
         description : this.description,
         imageUrl : this.imageURL,
       };
-      const baseURL =  "https://baobabookstore.herokuapp.com";
       
-      await axios({
-        method: 'post',
-        url: `${baseURL}/bookstore/genre/create`,
-        data : JSON.stringify(newGenre),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      axios.post(this.baseURL+"bookstore/genre/create", newGenre)
       .then(() => {
-        swal({
-          text: "Genre Added Successfully!",
-          icon: "success",
-          closeOnClickOutside: false,
+          this.$emit("fetchData");
+          this.$router.push({name: 'AdminGenre'});
+          swal({
+              text: "Genre added!",
+              icon: "success"
+          })
+        }).catch((err) => {
+            console.log("err", err);
         });
-      })
-      .catch(err => console.log(err));
     }
   },
   mounted(){

@@ -7,7 +7,7 @@
     <div class="card-body">
       <h5 class="card-title">{{genre.genreName}}</h5>
       <p class="card-text font-italic">{{genre.description}}</p>
-      <router-link id="edit-genre" :to="{ name: 'EditGenre', params: { id : genre.id, genre: genre } }" >
+      <router-link id="edit-genre" :to="{ name: 'EditGenre', params: { id : genre.id, genre: genre } }" v-show="$route.name=='AdminGenre'" >
         Edit
       </router-link>
     </div>

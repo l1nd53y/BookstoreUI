@@ -3,6 +3,10 @@ import Home from '../views/Home.vue'
 import AddGenre from "../views/Genre/AddGenre";
 import Genre from "../views/Genre/Genre";
 import EditGenre from "../views/Genre/EditGenre";
+import Admin from "../views/Admin";
+import Book from "../views/Book/Book";
+import AddBook from "../views/Book/AddBook";
+import EditBook from "../views/Book/EditBook";
 
 const routes = [
   {
@@ -34,6 +38,26 @@ const routes = [
     name: "EditGenre",
     component: EditGenre,
     props: true,
+  },
+  {
+    path: "/admin",
+    name: "Admin",
+    component: Admin
+  },
+  {
+    path: '/admin/book',
+    name: 'AdminBook',
+    component: Book
+  },
+  {
+    path: '/admin/book/new',
+    name: 'AddBook',
+    component: AddBook
+  },
+  {
+    path: '/admin/book/update/:id',
+    name: 'EditBook',
+    component: EditBook
   }
 ];
 

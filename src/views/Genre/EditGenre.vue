@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h3 class="pt-3">Edit Genre</h3>
+        <h4 class="pt-3">Edit Genre</h4>
       </div>
     </div>
 
@@ -19,7 +19,7 @@
             <input type="text" class="form-control" v-model="description" required>
           </div>
           <div class="form-group">
-            <label>ImageURL</label>
+            <label>Image URL</label>
             <input type="url" class="form-control" v-model="imageUrl" required>
           </div>
           <button type="button" class="btn btn-primary" @click="editGenre">Submit</button>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-var axios =  require('axios')
+const axios =  require('axios')
 import swal from 'sweetalert';
 export default {
   data(){
@@ -43,7 +43,7 @@ export default {
       genreIndex : null
     }
   },
-  props : ["baseURL", "genre"],
+  props : ["baseURL", "genres"],
   methods : {
     async editGenre() {
       const updatedGenre = {
@@ -51,27 +51,23 @@ export default {
         genreName : this.genreName,
         description : this.description,
         imageUrl : this.imageUrl,
-      }
-      await axios({
-        method: 'post',
-        url: this.baseURL+"genre/update/"+this.id,
-        data : JSON.stringify(updatedGenre),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      };
+      axios.post(this.baseURL+"bookstore/genre/update/"+this.id, updatedGenre)
       .then(() => {
-        swal({
-          text: "Genre Updated Successfully!",
-          icon: "success",
-          closeOnClickOutside: false,
+          this.$emit("fetchData");
+          this.$router.push({name: 'AdminGenre'});
+          swal({
+              text: "Genre updated!",
+              icon: "success"
+          })
+        }).catch((err) => {
+            console.log("err", err);
         });
-      })
-      .catch(err => console.log(err));
     }
   },
   mounted() {
     this.id = this.$route.params.id;
+    this.genre = this.genres.filter(genre => genre.id == this.id)[0];
     this.genreName = this.genre.genreName;
     this.description = this.genre.description;
     this.imageUrl = this.genre.imageUrl;
