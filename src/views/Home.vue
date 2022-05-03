@@ -13,7 +13,7 @@
 
     <div id="start-shopping" class="container">
       <div class="row">
-        <div class="col-12 text-left">
+        <div class="col-12 text-center">
           <h2 class="pt-3">Top Genres</h2>
         </div>
       </div>
@@ -24,11 +24,11 @@
         </div>
       </div>
     </div>
-
+<br><br>
     <hr>
     <div class="container">
       <div class="row">
-        <div class="col-12 text-left">
+        <div class="col-12 text-center">
           <h2 class="pt-3">Top Books</h2>
         </div>
       </div>
@@ -57,9 +57,9 @@
     },
     mounted(){
       this.genre_size = this.genres.length;
-      this.genre_size = Math.min(6, this.genre_size);
+      this.genre_size = Math.min(3, this.genre_size);
       this.book_size = this.books.length;
-      this.book_size = Math.min(8, this.book_size);
+      this.book_size = Math.min(3, this.book_size);
     }
   }
 </script>

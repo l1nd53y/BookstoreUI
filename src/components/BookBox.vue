@@ -8,7 +8,7 @@
             />
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{ book.title }}</h5>
+            <router-link :to="{ name: 'ShowDetails', params: { id : book.id } }"><h5 class="card-title">{{book.title}}</h5></router-link>
             <p class="card-text"><sup>$</sup>{{book.price}}</p>
       <p class="card-text font-italic">{{book.description.substring(0,65)}}...</p>
       <router-link id="edit-book" :to="{name : 'EditBook', params : {id : book.id} }" v-show="$route.name=='AdminBook'">

@@ -1,5 +1,7 @@
 <template>
-  <Navbar />
+  <Navbar :cartCount="cartCount"
+    @resetCartCount="resetCartCount"
+    v-if="!['Signup', 'Signin'].includes($route.name)"/>
   <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> 
@@ -11,24 +13,28 @@
   @fetchData="fetchData"
   >
   </router-view>
+  <Footer v-if="!['Signup', 'Signin'].includes($route.name)" />
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue';
+import Footer from './components/Footer.vue';
 import axios from 'axios';
 export default {
-  components: { Navbar },
+  components: { Navbar, Footer },
   data() {
     return {
+      // baseURL: 'http://localhost:8080/',
       baseURL : "https://baobabookstore.herokuapp.com/",
       books: [],
-      genres: []
+      genres: [],
+      cartCount: 0,
     }
   },
   methods: {
     async fetchData() {
 
-      // api call to get all the genres
+      // api call to get all genres
       await axios.get(this.baseURL + "bookstore/genre/")
       .then(res => {
         this.genres = res.data
@@ -39,9 +45,23 @@ export default {
       .then(res => {
         this.books = res.data
       }).catch((err) => console.log('err', err));
-    }
+
+      if (this.token) {
+        axios
+          .get(`${this.baseURL}cart/?token=${this.token}`)
+          .then((res) => {
+            const result = res.data;
+            this.cartCount = result.cartItems.length;
+          })
+          .catch((err) => console.log("err", err));
+      }
+    },
+    resetCartCount() {
+      this.cartCount = 0;
+    },
   },
   mounted() {
+    this.token = localStorage.getItem("token");
     this.fetchData();
   }
 };
@@ -67,6 +87,9 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+html {
+  overflow-y: scroll;
 }
 </style>
 

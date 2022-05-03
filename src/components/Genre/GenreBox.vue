@@ -5,7 +5,8 @@
     </div>
 
     <div class="card-body">
-      <h5 class="card-title">{{genre.genreName}}</h5>
+      <router-link :to="{ name: 'ListBooks', params: { id: genre.id } }">
+        <h5 class="card-title">{{ genre.genreName }}</h5></router-link>
       <p class="card-text font-italic">{{genre.description}}</p>
       <router-link id="edit-genre" :to="{ name: 'EditGenre', params: { id : genre.id, genre: genre } }" v-show="$route.name=='AdminGenre'" >
         Edit
@@ -18,8 +19,15 @@
 export default {
     name : "GenreBox",
     props : ["genre"],
-    methods : {},
-}
+    methods: {
+    listBooks() {
+      this.$router.push({
+        name: "ListBooks",
+        params: { id: this.genre.id },
+      });
+    },
+  },
+};
 </script> 
 
 <style scoped>

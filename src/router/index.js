@@ -7,6 +7,15 @@ import Admin from "../views/Admin";
 import Book from "../views/Book/Book";
 import AddBook from "../views/Book/AddBook";
 import EditBook from "../views/Book/EditBook";
+import ShowDetails from "../views/Book/ShowDetails";
+import ListBooks from "../views/Genre/ListBooks";
+import Signup from "../views/Signup";
+import Signin from '../views/Signin';
+import WishList from "../views/Book/WishList";
+import Cart from '../views/Cart';
+import Success from '../views/Payment/Success';
+import Failed from '../views/Payment/Failed';
+import Checkout from '../views/Checkout/Checkout';
 
 const routes = [
   {
@@ -15,13 +24,9 @@ const routes = [
     component: Home,
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/genre/show/:id",
+    name: "ListBooks",
+    component: ListBooks,
   },
   {
     path: "/admin/genre/add",
@@ -58,7 +63,51 @@ const routes = [
     path: '/admin/book/update/:id',
     name: 'EditBook',
     component: EditBook
-  }
+  },
+  {
+    path : '/book/show/:id',
+    name : 'ShowDetails',
+    component: ShowDetails
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup
+  },
+  {
+    path: '/signin',
+    name: 'Signin',
+    component: Signin
+  },
+  {
+    path: '/wishlist',
+    name: 'WishList',
+    component: WishList
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
+  },
+  {
+    path: '/payment/success',
+    name: 'PaymentSuccess',
+    component: Success,
+  },
+
+  {
+    path: '/payment/failed',
+    name: 'PaymentFailed',
+    component: Failed,
+  },
+
+  // checkout
+
+  {
+    path: '/checkout',
+    name: 'Checkout',
+    component: Checkout,
+  },
 ];
 
 const router = createRouter({
