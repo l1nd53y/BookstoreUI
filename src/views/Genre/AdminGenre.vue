@@ -3,6 +3,9 @@
      <div class="row">
        <div class="col-12 text-center">
          <h4 class="pt-3">Genres</h4>
+         <router-link :to="{name : 'AddGenre'}">
+           <button class="btn" style="float: right">Add Genre</button>
+         </router-link>
      </div>
 </div>
 <div class="row">
@@ -17,7 +20,7 @@
 import GenreBox from "@/components/Genre/GenreBox.vue"
 const axios =  require('axios');
 export default {
-  name: "Genre",
+  name: "AdminGenre",
   //props: ["genres"],
   components: {GenreBox},
   data(){

@@ -3,6 +3,9 @@
      <div class="row">
        <div class="col-12 text-center">
          <h4 class="pt-3">Books</h4>
+         <router-link :to="{name : 'AddBook'}">
+           <button class="btn" style="float: right">Add Book</button>
+         </router-link>
      </div>
 </div>
 <div class="row">
@@ -17,7 +20,7 @@
 import BookBox from "@/components/BookBox.vue"
 const axios =  require('axios');
 export default {
-  name: "Book",
+  name: "AdminBook",
   //props: ["books"],
   components: {BookBox},
   data(){

@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import AddGenre from "../views/Genre/AddGenre";
-import Genre from "../views/Genre/Genre";
+import AdminGenre from "../views/Genre/AdminGenre";
 import EditGenre from "../views/Genre/EditGenre";
 import Admin from "../views/Admin";
-import Book from "../views/Book/Book";
+import AdminBook from "../views/Book/AdminBook";
 import AddBook from "../views/Book/AddBook";
 import EditBook from "../views/Book/EditBook";
 import ShowDetails from "../views/Book/ShowDetails";
@@ -16,6 +16,8 @@ import Cart from '../views/Cart';
 import Success from '../views/Payment/Success';
 import Failed from '../views/Payment/Failed';
 import Checkout from '../views/Checkout/Checkout';
+import Book from '../views/Book/Book.vue';
+import Genre from '../views/Genre/Genre.vue';
 
 const routes = [
   {
@@ -36,7 +38,7 @@ const routes = [
   {
     path: "/admin/genre",
     name: "AdminGenre",
-    component: Genre,
+    component: AdminGenre,
   },
   {
     path: "/admin/genre/:id",
@@ -52,7 +54,7 @@ const routes = [
   {
     path: '/admin/book',
     name: 'AdminBook',
-    component: Book
+    component: AdminBook
   },
   {
     path: '/admin/book/new',
@@ -101,13 +103,21 @@ const routes = [
     component: Failed,
   },
 
-  // checkout
-
   {
     path: '/checkout',
     name: 'Checkout',
     component: Checkout,
   },
+  {
+    path: '/books',
+    name: 'Book',
+    component: Book,
+  },
+  {
+    path: '/genres',
+    name: 'Genre',
+    component: Genre,
+  }
 ];
 
 const router = createRouter({

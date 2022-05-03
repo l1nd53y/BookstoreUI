@@ -60,15 +60,15 @@
           >
             Browse
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarAccount">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <router-link class="dropdown-item" :to="{ name: 'Home' }"
               >Home
             </router-link>
-            <router-link class="dropdown-item" :to="{ name: 'Home' }"
-              >Book
+            <router-link class="dropdown-item" :to="{ name: 'Book' }"
+              >Books
             </router-link>
-            <router-link class="dropdown-item" :to="{ name: 'Home' }"
-              >Genre
+            <router-link class="dropdown-item" :to="{ name: 'Genre' }"
+              >Genres
             </router-link>
           </div>
         </li>
