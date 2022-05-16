@@ -24,7 +24,7 @@ export default {
   components: { Navbar, Footer },
   data() {
     return {
-      // baseURL: 'http://localhost:8080/',
+      // baseURL : "http://localhost:8080/",
       baseURL : "https://baobabookstore.herokuapp.com/",
       books: [],
       genres: [],

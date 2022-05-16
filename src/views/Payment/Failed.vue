@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <h1>Failed</h1>
+    <h1>Order Failed! Please try again.</h1>
   </div>
 </template>
 

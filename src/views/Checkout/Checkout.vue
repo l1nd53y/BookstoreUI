@@ -3,10 +3,9 @@
     <h3>You will be redirected to payment page</h3>
     <div class="alert alert-primary">
       While making payment use card number 4242 4242 4242 4242 and enter random
-      date and cvv (3 digit)
+      date and CVV (3 digit)
     </div>
-
-    <button class="btn btn-primary" @click="goToCheckout">Make Payment</button>
+<button class="btn btn-primary" @click="goToCheckout">Make Payment</button>
   </div>
 </template>
 
@@ -15,7 +14,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      stripeAPIToken: '<stripe token>',
+      stripeAPIToken: 'pk_test_51KQKAzJjzZZNW0zFccmgoaEgItmVpZS1CKlpteQFPiEZJhGDAk9VlspxXQgBE8D6vECWbern2M69Nv9vLCKoOC8m00MqXtTzuB',
       stripe: '',
       token: null,
       checkoutBodyArray: [],
@@ -29,13 +28,13 @@ export default {
         .get(`${this.baseURL}cart/?token=${this.token}`)
         .then((response) => {
           if (response.status == 200) {
-            let products = response.data;
-            for (let i = 0; i < products.cartItems.length; i++) {
+            let books = response.data;
+            for (let i = 0; i < books.cartItems.length; i++) {
               this.checkoutBodyArray.push({
-                price: products.cartItems[i].product.price,
-                quantity: products.cartItems[i].quantity,
-                productName: products.cartItems[i].product.name,
-                productId: products.cartItems[i].product.id,
+                price: books.cartItems[i].book.price,
+                quantity: books.cartItems[i].quantity,
+                bookName: books.cartItems[i].book.title,
+                bookId: books.cartItems[i].book.id,
               });
             }
           }
