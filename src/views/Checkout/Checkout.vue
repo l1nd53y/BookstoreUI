@@ -1,11 +1,12 @@
 <template>
-  <div class="div_class">
-    <h3>You will be redirected to payment page</h3>
+  <div class="text-center">
+<h3 class = "pt3">You will be redirected to payment page</h3>
     <div class="alert alert-primary">
-      While making payment use card number 4242 4242 4242 4242 and enter random
+      While making TEST payment use card number 4242 4242 4242 4242 and enter random
       date and CVV (3 digit)
     </div>
-<button class="btn btn-primary" @click="goToCheckout">Make Payment</button>
+
+    <button class="btn btn-primary" @click="goToCheckout">Make Payment</button>
   </div>
 </template>
 
@@ -66,9 +67,10 @@ export default {
 };
 </script>
 <style scoped>
-.alert {
+/* .alert {
   width: 50%;
-}
+  text-align: center;
+} */
 .div_class {
   margin-top: 5%;
   margin-left: 30%;
